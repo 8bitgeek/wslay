@@ -29,10 +29,15 @@
 extern "C" {
 #endif
 
-#include <stdint.h>
-#include <stdlib.h>
-#include <sys/types.h>
-
+#if defined(CARIBOU_RTOS)
+	#include <caribou.h>
+	#include <caribou/kernel/types.h>
+	#include <caribou/lib/string.h>
+#else
+	#include <stdint.h>
+	#include <stdlib.h>
+	#include <sys/types.h>
+#endif
 
 /*
  * wslay/wslayver.h is generated from wslay/wslayver.h.in by
@@ -79,6 +84,8 @@ enum wslay_io_flags {
    */
   WSLAY_MSG_MORE = 1
 };
+
+typedef size_t ssize_t;
 
 /*
  * Callback function used by wslay_frame_send() function when it needs

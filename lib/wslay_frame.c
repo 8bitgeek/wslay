@@ -24,9 +24,15 @@
  */
 #include "wslay_frame.h"
 
-#include <stddef.h>
-#include <string.h>
-#include <assert.h>
+#if defined(CARIBOU_RTOS)
+	#include <caribou.h>
+	#include <caribou/lib/stddef.h>
+	#include <caribou/lib/string.h>
+#else
+	#include <stddef.h>
+	#include <string.h>
+	#include <assert.h>
+#endif
 
 #include "wslay_net.h"
 

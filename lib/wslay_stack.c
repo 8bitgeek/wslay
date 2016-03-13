@@ -24,8 +24,13 @@
  */
 #include "wslay_stack.h"
 
-#include <string.h>
-#include <assert.h>
+#if defined(CARIBOU_RTOS)
+	#include <caribou.h>
+	#include <caribou/lib/string.h>
+#else
+	#include <string.h>
+	#include <assert.h>
+#endif
 
 struct wslay_stack* wslay_stack_new()
 {
